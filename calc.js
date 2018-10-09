@@ -1,18 +1,36 @@
-var button = document.querySelector('.fun2');
+// var button = document.querySelector('.fun2');
 
 var calculator = document.querySelector('#inCon');
 
 var slash = document.querySelector('.slash');
 
-var PI = document.querySelector('.PI');
-
 var modalBtn = document.querySelector('.quest');
 
-
+var groupBtn = document.getElementsByClassName('butts');
 
 
 function buttonclick() {
-	
+	var input = document.createElement('input');
+	var PI = Math.PI;
+	input.className = 'but PI';
+	input.value = PI;
+	console.log(input);
+	slash.value = 'pi';
+	slash.style.background = 'linear-gradient(#2255ff, #99c2ff, #2255ff)';
+	// if (groupBtn[1].children[3].value == '/') {
+			// groupBtn[1].children[3].value = input;
+	// };
+
+	var input1 = document.createElement('input');
+	var POW = Math.pow;
+	input1.className = 'but pow';
+	input1.value = POW;
+	console.log(input1);
+	plus.value = "POW";
+	plus.style.background = 'linear-gradient(#2255ff, #99c2ff, #2255ff)';
+	// if (groupBtn[1].children[3].value == '/') {
+			// groupBtn[1].children[3].value = input;
+	// };
 }
 
 
@@ -44,4 +62,20 @@ window.onclick = function(event) { //when the user clicks anywhere outside of th
 	if (event.target == modal) {
 		modal.style.display = 'none';
 	}
+}
+
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
 }

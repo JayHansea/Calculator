@@ -244,7 +244,7 @@ h3 {
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 100px;
+  padding-top: 5%;
   left: 0;
   top: 0;
   width: 100%;
@@ -260,7 +260,7 @@ h3 {
   background: linear-gradient(#5cb85c, #56be43, #5cb85c);
   border: 1px solid #4cbb17;
   color: #fff;
-  font-size: 2em;
+  font-size: 1em;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   padding: 2% 5%;
@@ -268,12 +268,12 @@ h3 {
 
 .modalBody {
   width: 100%;
-  height: 70vh;
+  height: 75vh;
   padding: 2% 5%;
 }
 
-#pg {
-  font-size: 2em;
+.pg {
+  font-size: 1em;
 }
 
 .modalFooter {
@@ -282,7 +282,7 @@ h3 {
   background: linear-gradient(#5cb85c, #56be43, #5cb85c);
   border: 1px solid #4cbb17;
   color: #fff;
-  font-size: 2em;
+  font-size: 1em;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   padding: 2% 5%;
@@ -324,6 +324,45 @@ h3 {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+/*===== COLLAPSIBLE =====*/
+.collapsible {
+  background-color: #fff;
+  color: #009900;
+  cursor: pointer;
+  padding: 2%;
+  width: 100%;
+  height: 7vh;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1em;
+}
+
+.active, .collapsible:hover {
+  background-color: #fff;
+  font-weight: bolder;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+.collapsible:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: white;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 
 
@@ -766,4 +805,118 @@ h3 {
     border: 1px solid #c21807;
   }
 
+    /*==== Modal Design ====*/
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  .modalHead {
+    width: 100%;
+    height: 8vh;
+    background: linear-gradient(#5cb85c, #56be43, #5cb85c);
+    border: 1px solid #4cbb17;
+    color: #fff;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 2% 5%;
+  }
+
+  .modalBody {
+    width: 100%;
+    height: 70vh;
+    padding: 2% 5%;
+  }
+
+  #pg {
+    font-size: 2em;
+  }
+
+  .modalFooter {
+    width: 100%;
+    height: 8vh;
+    background: linear-gradient(#5cb85c, #56be43, #5cb85c);
+    border: 1px solid #4cbb17;
+    color: #fff;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 2% 5%;
+  }
+
+  .modalCon {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 90%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+  }
+
+  @keyframes animatetop {
+    from {
+      top: -300px;
+      opacity: 0;
+    }
+
+    to {
+      top: 0;
+      opacity: 1;
+    }
+  }
+
+  .close {
+    color: #fff;
+    float: right;
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /*===== COLLAPSIBLE =====*/
+  .collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    height: 7vh;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 2em;
+  }
+
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+
 }
+
