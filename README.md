@@ -8,6 +8,6 @@ Below is an image of the calculator, and more images is in the images folder in 
 
 On click of the f1, f2, or f3 buttons, the operator buttons below is supposed to change in respect to the various functions assigned to the them in the onclick function.
 
-![image 2](images/code.png)
+![image 2](https://github.com/JayHansea/Calculator/blob/master/images/code.PNG)
 
 I've checked online, but couldn't get a good logic to help me through it, I would love a logical thought of someone who has gone a lot more farther in javascript than I have, to probably just look at it and help me with a logical idea of how to get through it. Thanks.
