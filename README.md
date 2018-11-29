@@ -4,7 +4,7 @@ I started this project after seeing a sample of the scientific calculator in one
 
 Below is an image of the calculator, and more images is in the images folder in this repository;
 
-![image 1](images/SciCalc.png)
+![image 1](https://github.com/JayHansea/Calculator/blob/master/images/SciCalc.PNG)
 
 On click of the f1, f2, or f3 buttons, the operator buttons below is supposed to change in respect to the various functions assigned to the them in the onclick function.
 
