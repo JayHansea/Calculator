@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="css/style.css">
+	<title>calculator</title>
+</head>
+<body>
+	<div id="calcCon">
+		<form name="calculator" id="inCon">
+			<h3>Jhet pro</h3>
+
+			<input id="inScr" type="text" name="txt1">
+			<input id="bigInScr" type="text" name="txt2">
+
+						
+			<div class="butts tons">
+				<input class="but quest" type="button" name="quest" value="?">
+				<input class="but clr" type="button" name="clr" value="c" onclick="calculator.txt1.value = ''; calculator.txt2.value = ''">
+				<input class="but fun1" btn-group="fun1" disabled="disabled" type="button" name="fun1" value="f1" onclick="buttonclick(event)">
+				<input class="but fun2" btn-group="fun2" type="button" name="fun2" value="f2" onclick="buttonclick(event)">
+				<input class="but fun3" btn-group="fun3" type="button" name="fun3" value="f3" onclick="buttonclick(event)">
+			</div>
+
+
+			<div class="butts">
+				<input class="but ton7" type="button" name="btn7" value="7" onclick="calculator.txt1.value += '7'">
+				<input class="but ton8" type="button" name="btn8" value="8" onclick="calculator.txt1.value += '8'">
+				<input class="but ton9" type="button" name="btn9" value="9" onclick="calculator.txt1.value += '9'">
+				<input class="but slash" btn-group="fun1" type="button" name="slashbtn" id="slashbtn" value="/" onclick="calculator.txt1.value += '/'">
+				<input class="but plus" btn-group="fun1" type="button" name="plusbtn" id="plusbtn" value="+" onclick="calculator.txt1.value += '+'">
+			</div>
+
+
+			<div class="butts">
+				<input class="but ton4" type="button" name="btn4" value="4" onclick="calculator.txt1.value += '4'">
+				<input class="but ton5" type="button" name="btn5" value="5" onclick="calculator.txt1.value += '5'">
+				<input class="but ton6" type="button" name="btn6" value="6" onclick="calculator.txt1.value += '6'">
+				<input class="but star" btn-group="fun1" type="button" name="starbtn" id="starbtn" value="*" onclick="calculator.txt1.value += '*'">
+				<input class="but dash" btn-group="fun1" type="button" name="dashbtn" id="dashbtn" value="-" onclick="calculator.txt1.value += '-'">
+			</div>
+
+
+			<div class="butts">
+				<input class="but ton1" type="button" name="btn1" value="1" onclick="calculator.txt1.value += '1'">
+				<input class="but ton2" type="button" name="btn2" value="2" onclick="calculator.txt1.value += '2'">
+				<input class="but ton3" type="button" name="btn3" value="3" onclick="calculator.txt1.value += '3'">
+				<input class="but op" btn-group="fun1" type="button" name="openParenth" id="openParenth" value="(" onclick="calculator.txt1.value += '('">
+				<input class="but cp" btn-group="fun1" type="button" name="closeParenth" id="closeParenth" value=")" onclick="calculator.txt1.value += ')'">				
+			</div>
+
+
+			<div class="butts">
+				<input class="but mode" type="button" name="modebtn" value="%" onclick="calculator.txt1.value += '%'">
+				<input class="but ton0" type="button" name="btn0" value="0" onclick="calculator.txt1.value += '0'">
+				<input class="but dot" type="button" name="dotbtn" value="." onclick="calculator.txt1.value += '.'">
+				<input class="but del" type="button" name="delbtn" value="del" onclick="removeOne()">
+				<input class="but equals" type="button" name="equalsbtn" value="=" onclick="calculator.txt2.value = eval(calculator.txt1.value)">
+			</div>
+			
+		</form>
+
+		<div id="myModal" class="modal">
+				<div class="modalCon">
+					<div class="modalHead">
+						<span class="close">&times</span>
+						<h1>Help Menu</h1>
+					</div>
+					<div class="modalBody">
+						<button type="button" class="collapsible">Open Collapsible</button>
+						<div class="content">
+							<p class="pg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						</div>
+						<button type="button" class="collapsible">Open Collapsible</button>
+						<div class="content">
+							<p class="pg">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						</div>
+					</div>
+					<div class="modalFooter">
+						<h4>Designed by</h4> <h4>Ezeokafor Tochukwu John</h4>
+					</div>
+				</div>
+		</div>
+	</div>
+
+		<template name="fun1">
+		</template>
+
+
+
+		<template name="fun2">
+			<input class="but PI" btn-group="fun2" type="button" name="PI" id="PI" value="π" onclick="calculator.txt2.value = eval('Math.PI * parseFloat(calculator.txt1.value)')">
+			<input class="but pow" btn-group="fun2" type="button" name="pow" id="pow" value="^" onclick="calculator.txt2.value = eval('Math.pow(parseFloat(calculator.txt1.value.split(Math.pow)) )')">
+			<input class="but sqrt" btn-group="fun2" type="button" name="sqrt" id="sqrt" value="√" onclick="calculator.txt2.value = eval('Math.sqrt(parseInt(calculator.txt1.value))')">
+			<input class="but ln" btn-group="fun2" type="button" name="ln" id="ln" value="ln" onclick="calculator.txt2.value = eval('Math.log(parseFloat(calculator.txt1.value))')">
+			<input class="but log" btn-group="fun2" type="button" name="log" id="log" value="log" onclick="calculator.txt1.value += 'Math.log10'">
+			<input class="but rnd" btn-group="fun2" type="button" name="rnd" id="rnd" value="rnd" onclick="calculator.txt1.value += 'Math.random'">
+		</template>
+
+
+		<template  name="fun3">
+			<input class="but cos" btn-group="fun3" type="button" name="cos" id="cos" value="cos" onclick="calculator.txt1.value += 'Math.cos'">
+			<input class="but sin" btn-group="fun3" type="button" name="sin" id="sin" value="sin" onclick="calculator.txt1.value += 'Math.sin'">
+			<input class="but tan" btn-group="fun3" type="button" name="tan" id="tan" value="tan" onclick="calculator.txt1.value += 'Math.tan'">
+			<input class="but acos" btn-group="fun3" type="button" name="acos" id="acos" value="acos" onclick="calculator.txt1.value += 'Math.acos'">
+			<input class="but asin" btn-group="fun3" type="button" name="asin" id="asin" value="asin" onclick="calculator.txt1.value += 'Math.asin'">
+			<input class="but atan" btn-group="fun3" type="button" name="atan" id="atan" value="atan" onclick="calculator.txt1.value += 'Math.atan'">
+		</template>
+
+	<script type="text/javascript" src="js/calc.js"></script>
+
+</body>
+</html>

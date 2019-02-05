@@ -1,0 +1,804 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+
+  --fun1-color: #1134a6;
+  --fun1-border: 1px solid #f5f5f5;
+
+  --fun2-color: #2255ff;
+  --fun2-border: 1px solid #f5f5f5;
+
+  --fun3-color:#4682b4;
+  --fun3-border: 1px solid #f5f5f5;
+
+  --display: inline-flex;
+  --width: 17%;
+  --height: 7vh;
+}
+
+/*==== Calculator Border ====*/
+#calcCon {
+  width: 100vw;
+  height: 100vh;
+  background: #f5f5f5;
+  overflow: hidden;
+}
+
+#inCon {
+  width: 100vw;
+  height: 100vh;
+}
+
+h3 {
+  font-family: lobster, cursive, arial;
+  font-style: italic;
+  margin: 10% 0 3% 70%;
+  text-shadow: inherit;
+  color: #2255ff;
+}
+
+/*==== Calculator Screen ====*/
+#inScr {
+  width: 100%;
+  height: 2.5%;
+  border: 1px solid #3e3e3e;
+  border: none;
+  font-size: 1.3em;
+  padding: 10% 8% 6% 8%;
+  margin: 0 0 0 0;
+  background-color: #fff;
+  text-align: right;
+}
+
+#bigInScr {
+  width: 100%;
+  height: 10%;
+  border: 1px solid #3e3e3e;
+  border: none;
+  font-size: 2em;
+  padding: 18% 8% 15% 8%;
+  margin: 0 0 0 0;
+  background-color: #fff;
+  text-align: right;
+}
+
+/*==== Divs holding rows of buttons ====*/
+.butts {
+  height: 10vh;
+  border-radius: 5px;
+  margin: 4% 0 0 0;
+}
+
+.tons {
+  margin: 1% 0 0 0;
+}
+
+/*==== buttons ====*/
+.but {
+  width: var(--width);
+  height: var(--height);
+  display: var(--display);
+  border: 1px solid #f5f5f5;
+  box-shadow: inset 0 1px 1px #f5f5f5;
+  border-radius: 5px;
+  padding: 4% 7.5% 4% 7.5%;
+  margin: 4% 0 0 1.5%;
+  color: #000;
+  font-weight: bolder;
+}
+
+.equals {
+  color: #35a301;
+  border: 1px solid #f5f5f5;
+}
+
+.dash[btn-group="fun1"], 
+.op[btn-group="fun1"], 
+.cp[btn-group="fun1"], 
+.star[btn-group="fun1"], 
+.slash[btn-group="fun1"], 
+.plus[btn-group="fun1"], 
+.fun1[btn-group="fun1"] {
+  color: var(--fun1-color);
+  border: var(--fun1-border);
+}
+
+input[type="button"] {
+  font-size: 1em;
+}
+
+.mode {
+  padding: 4% 6.9% 4% 6.9%;
+}
+
+.del {
+  padding: 4% 5.3% 4% 5.3%;
+  color: #d30000;
+}
+
+.fun2, .fun3 {
+  padding: 4% 6.3% 4% 6.3%;
+}
+
+.fun2 {
+  color: var(--fun2-color);
+  border: var(--fun2-border);
+}
+
+.pow[btn-group="fun2"], 
+.sqrt[btn-group="fun2"], 
+.ln[btn-group="fun2"], 
+.PI[btn-group="fun2"], 
+.log[btn-group="fun2"], 
+.rnd[btn-group="fun2"] {
+  color: var(--fun2-color);
+  border: var(--fun2-border);
+  padding: 4% 6.3% 4% 6.3%;
+}
+
+.log[btn-group="fun2"], 
+.rnd[btn-group="fun2"] {
+  padding: 4% 5% 4% 5%;
+}
+
+.PI {
+  padding: 4% 7.5% 4% 7.5%;
+}
+
+.fun3, .cos, 
+.sin, .tan, 
+.acos, .asin, .atan {
+  color: var(--fun3-color);
+  border: var(--fun3-border);
+}
+
+.cos, 
+.sin, .tan {
+  padding: 4% 5% 4% 5%;
+}
+
+.acos, .asin, .atan {
+  padding: 4% 3.9% 4% 3.9%;
+}
+
+
+
+.quest {
+  color: #fc6600;
+}
+
+.clr {
+  color: #f00;
+}
+
+/*==== Modal Design ====*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 5%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modalHead {
+  width: 100%;
+  height: 8vh;
+  background: linear-gradient(#5cb85c, #56be43, #5cb85c);
+  border: 1px solid #4cbb17;
+  color: #fff;
+  font-size: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding: 2% 5%;
+}
+
+.modalBody {
+  width: 100%;
+  height: 75vh;
+  padding: 2% 5%;
+}
+
+.pg {
+  font-size: 1em;
+}
+
+.modalFooter {
+  width: 100%;
+  height: 8vh;
+  background: linear-gradient(#5cb85c, #56be43, #5cb85c);
+  border: 1px solid #4cbb17;
+  color: #fff;
+  font-size: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding: 2% 5%;
+}
+
+.modalCon {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 90%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.close {
+  color: #fff;
+  float: right;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*===== COLLAPSIBLE =====*/
+.collapsible {
+  background-color: #fff;
+  color: #009900;
+  cursor: pointer;
+  padding: 2%;
+  width: 100%;
+  height: 7vh;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1em;
+}
+
+.active, .collapsible:hover {
+  background-color: #fff;
+  font-weight: bolder;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+.collapsible:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: white;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+
+@media only screen and (min-width: 450px) {
+
+
+  /*==== Calculator Screen ====*/
+  #inScr {
+    width: 100%;
+    height: 1.5vh;
+    border: 1px solid #3e3e3e;
+    border: none;
+    font-size: 1.7em;
+    padding: 8% 6% 4% 6%;
+    margin: 0 0 0 0;
+    background-color: #fff;
+    text-align: right;
+  }
+
+  #bigInScr {
+    width: 100%;
+    height: 10vh;
+    border: 1px solid #3e3e3e;
+    border: none;
+    font-size: 2.8em;
+    padding: 16% 6% 13% 6%;
+    margin: 0 0 0 0;
+    background-color: #fff;
+    text-align: right;
+  }
+
+  /*==== Calculator Border ====*/
+  h3 {
+    font-family: lobster, cursive, arial;
+    font-style: italic;
+    font-size: 2em;
+    margin: 8% 0 0 75%;
+    text-shadow: inherit;
+  }
+
+  /*==== Divs holding rows of buttons ====*/
+  .butts {
+    /* width: 100%; */
+    height: 9vh;
+    border-radius: 5px;
+    margin: 3.5% 0 0 3%;
+  }
+
+  .tons {
+    margin: 3.5% 0 0 3%;
+  }  
+
+  /*==== buttons ====*/
+  .but {
+    border: 1px solid #f5f5f5;
+    box-shadow: inset 0 1px 1px #f5f5f5;
+    border-radius: 10px;
+    padding: 3% 8% 4% 8%;
+    margin: 1% 0 0 1.5%;
+    color: #000;
+    font-weight: bolder;
+    font-size: 2em;
+  }
+
+  .ton0 {
+    padding: 3% 8% 4% 8%;
+  }
+  
+  .equals {
+    color: #35a301;
+    border: 1px solid #f5f5f5;
+  }
+
+  .dash[btn-group="fun1"], 
+  .op[btn-group="fun1"], 
+  .cp[btn-group="fun1"], 
+  .star[btn-group="fun1"], 
+  .slash[btn-group="fun1"], 
+  .plus[btn-group="fun1"], 
+  .fun1[btn-group="fun1"] {
+    color: var(--fun1-color);
+    border: var(--fun1-border);
+  }
+
+  input[type="button"] {
+    font-size: 1.7em;
+  }
+  
+  .fun2, .fun3 {
+    padding: 3% 6.3% 4% 6.3%;
+  }
+  
+  .fun2 {
+    color: var(--fun2-color);
+    border: var(--fun2-border);
+  }
+
+  .mode {
+    padding: 3% 7.5% 4% 7.5%;
+  }
+
+  .del {
+    padding: 3% 6.2% 4% 6.2%;
+    color: #d30000;
+  }
+
+  .pow[btn-group="fun2"], 
+  .sqrt[btn-group="fun2"], 
+  .ln[btn-group="fun2"], 
+  .PI[btn-group="fun2"], 
+  .log[btn-group="fun2"], 
+  .rnd[btn-group="fun2"] {
+    padding: 3% 6.3% 4% 6.3%;
+  }
+
+  .log[btn-group="fun2"], 
+  .rnd[btn-group="fun2"] {
+  padding: 3% 5% 4% 5%;
+  }
+
+  .PI {
+  padding: 3% 7.5% 4% 7.5%;
+  }
+
+  .fun3, .cos, 
+  .sin, .tan, 
+  .acos, .asin, .atan {
+  color: var(--fun3-color);
+  border: var(--fun3-border);
+  }
+
+  .cos, 
+  .sin, .tan {
+  padding: 3% 5% 4% 5%;
+  }
+
+  .acos, .asin, .atan {
+  padding: 3% 3.9% 4% 3.9%;
+  }
+
+  .quest {
+  color: #fc6600;
+  }
+
+  .clr {
+  color: #f00;
+  }
+
+  /*==== Modal Design ====*/
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  .modalHead {
+    width: 100%;
+    height: 8vh;
+    background: linear-gradient(#5cb85c, #56be43, #5cb85c);
+    border: 1px solid #4cbb17;
+    color: #fff;
+    font-size: 1.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 2% 5%;
+  }
+
+  .modalBody {
+    width: 100%;
+    height: 70vh;
+    padding: 2% 5%;
+  }
+
+  .pg {
+    font-size: 1.5em;
+  }
+
+  .modalFooter {
+    width: 100%;
+    height: 8vh;
+    background: linear-gradient(#5cb85c, #56be43, #5cb85c);
+    border: 1px solid #4cbb17;
+    color: #fff;
+    font-size: 1.5em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 2% 5%;
+  }
+
+  .modalCon {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 90%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+  }
+
+  @keyframes animatetop {
+    from {
+      top: -300px;
+      opacity: 0;
+    }
+
+    to {
+      top: 0;
+      opacity: 1;
+    }
+  }
+
+  .close {
+    color: #fff;
+    float: right;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /*===== COLLAPSIBLE =====*/
+  .collapsible {
+    background-color: #fff;
+    color: #090;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    height: 7vh;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.5em;
+  }
+
+  .active, .collapsible:hover {
+    background-color: #fff;
+  }
+
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  #inScr {
+    width: 100%;
+    height: 2vh;
+    border: 1px solid #3e3e3e;
+    border: none;
+    /*border-radius: 5px;*/
+    font-size: 2.3em;
+    padding: 8% 6% 4% 6%;
+    margin: 0 0 0 0;
+    background-color: #fff;
+    text-align: right;
+  }
+
+  #bigInScr {
+    width: 100%;
+    height: 8vh;
+    border: 1px solid #3e3e3e;
+    border: none;
+    /*border-radius: 5px;*/
+    font-size: 3.8em;
+    padding: 15% 6% 12% 6%;
+    margin: 0 0 0 0;
+    background-color: #fff;
+    text-align: right;
+}
+
+   /*==== Calculator Border ====*/
+  h3 {
+    font-family: lobster, cursive, arial;
+    font-style: italic;
+    font-size: 2.5em;
+    margin: 8% 0 0 78%;
+    text-shadow: inherit;
+  }
+
+  /*==== Divs holding rows of buttons ====*/
+  .butts {
+    height: 9vh;
+    border-radius: 5px;
+    margin: 3.5% 0 0 4%;
+    font-size: 1.5em;
+  }
+
+  .tons {
+    margin: 3.5% 0 0 4%;
+  }
+
+  /*==== buttons ====*/
+  .but {
+    width: var(--width);
+    height: var(--height);
+    display: var(--display);
+    border: 1px solid #f5f5f5;
+    box-shadow: inset 0 1px 1px #f5f5f5;
+    border-radius: 10px;
+    padding: 2.5% 8% 4% 8%;
+    margin: 4% 0 0 1.1%;
+    color: #000;
+    font-weight: bolder;
+  }
+
+  .ton0 {
+    padding: 2.5% 8% 4% 8%;
+  }
+
+  .equals {
+    color: #35a301;
+    border: 1px solid #f5f5f5;
+  }
+  
+
+  .del {
+    padding: 2.5% 5.3% 4% 5.3%;
+    color: #d30000;
+  }
+  
+  .fun2, .fun3 {
+    padding: 2.5% 6.3% 4% 6.3%;
+  }
+  
+  .fun2 {
+    color: var(--fun2-color);
+    border: var(--fun2-border);
+  }
+
+  .pow[btn-group="fun2"], 
+  .sqrt[btn-group="fun2"], 
+  .ln[btn-group="fun2"], 
+  .PI[btn-group="fun2"], 
+  .log[btn-group="fun2"], 
+  .rnd[btn-group="fun2"] {
+    color: var(--fun2-color);
+    border: var(--fun2-border);
+    padding: 2.5% 6.3% 4% 6.3%;
+  }
+
+  .log[btn-group="fun2"], 
+  .rnd[btn-group="fun2"] {
+    padding: 2.5% 5% 4% 5%;
+  }
+
+  .PI {
+    padding: 2.5% 7.5% 4% 7.5%;
+  }
+
+  .fun3, .cos, 
+  .sin, .tan, 
+  .acos, .asin, .atan {
+    color: var(--fun3-color);
+    border: var(--fun3-border);
+  }
+
+  .cos, 
+  .sin, .tan {
+    padding: 2.5% 5% 4% 5%;
+  }
+
+  .acos, .asin, .atan {
+    padding: 2.5% 3.9% 4% 3.9%;
+  }
+
+  .quest {
+    color: #fc6600;
+  }
+
+  .clr {
+    color: #f00;
+  }
+
+    /*==== Modal Design ====*/
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  .modalHead {
+    width: 100%;
+    height: 8vh;
+    background: linear-gradient(#5cb85c, #56be43, #5cb85c);
+    border: 1px solid #4cbb17;
+    color: #fff;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 2% 5%;
+  }
+
+  .modalBody {
+    width: 100%;
+    height: 70vh;
+    padding: 2% 5%;
+  }
+
+  .pg {
+    font-size: 2em;
+  }
+
+  .modalFooter {
+    width: 100%;
+    height: 8vh;
+    background: linear-gradient(#5cb85c, #56be43, #5cb85c);
+    border: 1px solid #4cbb17;
+    color: #fff;
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 2% 5%;
+  }
+
+  .modalCon {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 90%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+  }
+
+  @keyframes animatetop {
+    from {
+      top: -300px;
+      opacity: 0;
+    }
+
+    to {
+      top: 0;
+      opacity: 1;
+    }
+  }
+
+  .close {
+    color: #fff;
+    float: right;
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+  }
+
+  /*===== COLLAPSIBLE =====*/
+  .collapsible {
+    background-color: #fff;
+    color: #090;
+    padding: 18px;
+    width: 100%;
+    height: 7vh;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 2em;
+  }
+
+  .active, .collapsible:hover {
+    background-color: #fff;
+  }
+
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+
+}
+
